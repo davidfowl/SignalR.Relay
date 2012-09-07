@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-0.5.3.js"></script>
+    <script>
+        $(function () {
+            var connection = $.hubConnection(),
+                chat = connection.createProxy('chat');
+
+            chat.on('foo', function (n) {
+                console.log(n);
+            });
+
+            connection.start().done(function () {
+                chat.invoke('foo', 1);
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
