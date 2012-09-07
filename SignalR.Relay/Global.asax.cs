@@ -62,11 +62,11 @@ namespace SignalR.Relay
         /// <returns></returns>
         public bool TryGetHub(string hubName, out HubDescriptor descriptor)
         {
-            descriptor = new HubDescriptor { Name = hubName, Type = typeof(PusherHub) };
+            descriptor = new HubDescriptor { Name = hubName, Type = typeof(RelayHub) };
             return true;
         }
 
-        private class PusherHub : Hub, IConnected, IDisconnect
+        private class RelayHub : Hub, IConnected, IDisconnect
         {
             public Task Connect()
             {
